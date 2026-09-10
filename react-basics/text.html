@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>React Basics</title>
+  </head>
+  <body>
+    <div class="js-container"></div>
+
+    <!-- <script src="https://unpkg.com/supersimpledev/react.js"></script>
+    <script src="https://unpkg.com/supersimpledev/react-dom.js"></script> -->
+    <script src="1.js"></script>
+    <script src="2.js"></script>
+
+    <script src="3.js"></script>
+    <!-- <script src="https://unpkg.com/supersimpledev/babel.js"></script> -->
+
+    <script type="text/babel">
+        const container = document.querySelector('.js-container');
+
+        const InputText = ({text, setText}) => {
+            
+            function saveText(event) {
+                setText(event.target.value)
+
+            }
+            return (
+                <input 
+                    onChange={saveText}
+                    value={text}
+                />
+            )
+        }
+
+        const ParagraphText = ({text}) => {
+            return (
+                <p>
+                    Hello {text}
+                </p>
+            )
+        }
+
+        const Button = ({text, setText}) => {
+            function resetText() {
+                setText("")
+            }
+
+            function showExample() {
+                setText("Alice")
+            }
+
+            return (
+                <>
+                    <button onClick={resetText}>
+                        Reset
+                    </button>
+                    <button onClick={showExample}>
+                        Example
+                    </button>
+                </>
+            )
+        }
+
+        const App = () => {
+            const [text, setText] = React.useState("")
+            return (
+                <>
+                    <InputText 
+                        text={text}
+                        setText={setText}
+                    />
+                    <ParagraphText 
+                        text={text}
+                    />
+                    <Button
+                        text={text}
+                        setText={setText}
+                    />
+                </>
+            )
+        }
+
+
+    ReactDOM.createRoot(container).render(<App/>);
+
+    </script>
+  </body>
+</html>

@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>React Basics</title>
+
+    <style>
+        .button-on {
+            background-color: rgb(5, 151, 5);
+            color: white;
+            border: none;
+            border-radius: 10px;
+            padding: 15px 20px;
+            font-size: 15px;
+        }
+
+        .button-off {
+            background-color: rgb(220, 53, 69);
+            color: white;
+            border: none;
+            border-radius: 10px;
+            padding: 15px 20px;
+            font-size: 15px;
+        }
+
+    </style>
+  </head>
+  <body>
+    <div class="js-container"></div>
+
+    <!-- <script src="https://unpkg.com/supersimpledev/react.js"></script>
+    <script src="https://unpkg.com/supersimpledev/react-dom.js"></script> -->
+    <script src="1.js"></script>
+    <script src="2.js"></script>
+
+    <script src="3.js"></script>
+    <!-- <script src="https://unpkg.com/supersimpledev/babel.js"></script> -->
+
+    <script type="text/babel">
+        const container = document.querySelector('.js-container');
+
+        const Button = () => {
+            const [isButtonOn, setisButtonOn] = React.useState(false)
+
+            function changeButton() {
+                setisButtonOn(isButtonOn === true ? false: true)
+            }
+
+            return (
+                <button className={isButtonOn === true ? "button-on": "button-off"} onClick={changeButton}>
+                    {isButtonOn === true ? "ON": "OFF"}
+                </button>
+            )
+        }
+
+        const App = () => {
+            return (
+                <Button/>
+            )
+        }
+
+
+    ReactDOM.createRoot(container).render(<App/>);
+
+    </script>
+  </body>
+</html>

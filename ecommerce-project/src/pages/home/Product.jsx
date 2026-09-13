@@ -26,7 +26,7 @@ export const Product = ({product, loadCart}) => {
     }
 
     return (
-        <div key={product.id} className="product-container">
+        <div data-testid={"product-container"} key={product.id} className="product-container">
             <div className="product-image-container">
                 <img className="product-image"
                     src={product.image}
@@ -51,7 +51,7 @@ export const Product = ({product, loadCart}) => {
             </div>
 
             <div className="product-quantity-container">
-                <select value={quantity} onChange={selectQuantity}>
+                <select data-testid="product-quantity" value={quantity} onChange={selectQuantity}>
                     <option value="1">1</option>
                     <option value="2">2</option>
                     <option value="3">3</option>
@@ -73,6 +73,7 @@ export const Product = ({product, loadCart}) => {
             </div>
 
             <button onClick={addToCart}
+            data-testid = "add-to-cart-button"
             className="add-to-cart-button button-primary">
                 Add to Cart
             </button>

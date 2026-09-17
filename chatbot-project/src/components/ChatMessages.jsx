@@ -24,13 +24,14 @@ const ChatMessages = ({chatMessages}) => {
     {chatMessages.length !== 0 &&
 
         chatMessages.map((chatMessage) => {
-        return (<ChatMessage
-            message={chatMessage.message}
-            sender={chatMessage.sender}
-            key={chatMessage.id}
-            time={chatMessage.time}
-            />
-        );
+            console.log(chatMessage)
+            return (<ChatMessage
+                message={chatMessage.message}
+                sender={chatMessage.sender}
+                key={chatMessage.id}
+                time={chatMessage.time}
+                />
+            );
         })
 
     } 

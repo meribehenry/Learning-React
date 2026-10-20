@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>React Basics</title>
+
+    <style>
+        p {
+            font-size: 20px;
+        }
+        .input-container {
+            display: flex;
+            flex-direction: column;
+            gap: 5px;
+            margin-bottom: 10px;
+        }
+
+        .input-field {
+            width: 300px;
+            padding: 10px 10px;
+            border-radius: 3px;
+        }
+
+        .input-password-container {
+            display: flex;
+            gap: 10px;
+        }
+
+        .button-container {
+            display: flex;
+            gap: 10px;
+        }
+
+        .button {
+            background-color: rgb(0, 123, 255);
+            color: white;
+            border: none;
+            border-radius: 10px;
+            padding: 15px 20px;
+            font-size: 15px;
+        }
+
+    </style>
+  </head>
+  <body>
+    <div class="js-container"></div>
+
+    <!-- <script src="https://unpkg.com/supersimpledev/react.js"></script>
+    <script src="https://unpkg.com/supersimpledev/react-dom.js"></script> -->
+    <script src="1.js"></script>
+    <script src="2.js"></script>
+
+    <script src="3.js"></script>
+    <script src="5.js"></script>
+    <!-- <script src="https://unpkg.com/supersimpledev/babel.js"></script> -->
+
+    <script type="text/babel">
+        const container = document.querySelector('.js-container');
+
+        const CurrentTime = () => {
+            const [time, setTime] = React.useState(dayjs().format('HH:mm:ss'))
+
+
+            React.useEffect(() => {
+                const id = setInterval(getCurrentTime, 1000)
+
+                function getCurrentTime() {
+                    const currentTime= dayjs().format('HH:mm:ss')
+                    setTime(currentTime) 
+                    console.log("run code")
+                }
+                
+                return () => {clearInterval(id)};
+            }, [])
+            
+            return (
+                <p>{time}</p>
+                )
+
+        }
+
+        
+        const App = () => {
+            const [text, setText] = React.useState("")
+            return (
+                <CurrentTime/>
+            )
+        }
+
+
+        ReactDOM.createRoot(container).render(<App/>);
+
+    </script>
+  </body>
+</html>
